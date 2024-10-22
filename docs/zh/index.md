@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: "Diátaxis Tech Docs"
-  text: "构建会呼吸的文档"
-  tagline: 全功能的技术文档最佳实践模板
+  text: "Build living doc site with best practices"
+  tagline: 基于VitePress和Diátaxis的全功能技术文档模板
   actions:
     - theme: brand
       text: Markdown Examples
@@ -14,7 +14,7 @@ hero:
       text: API Examples
       link: /api-examples
   image:
-    src: /vitepress-logo-large.webp
+    src: /logo.svg
     alt: DiataxisDocTemplate
 features:
   - title: Feature A

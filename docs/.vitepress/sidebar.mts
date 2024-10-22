@@ -30,6 +30,6 @@ export const Reference = (lang: string) => [
   }
 ]
 
-function match(lang: string, dict: Record<string, string>) {
-  return dict[lang] ?? dict['en']
+function match(lang: string, dict: Record<string, string>): string {
+  return dict[lang] ?? dict['en'] ?? 'wording not set'
 }

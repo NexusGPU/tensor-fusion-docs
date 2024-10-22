@@ -3,7 +3,7 @@ import { defineConfig, type DefaultTheme } from 'vitepress'
 
 export const en = defineConfig({
   lang: 'en-US',
-  description: 'The full-fledged tech doc template with best practices built-in',
+  description: 'The full-fledged tech doc template powered by VitePress & Diátaxis framework',
 
   themeConfig: {
     nav: nav(),

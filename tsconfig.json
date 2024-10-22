@@ -1,6 +1,7 @@
 {
   "include": ["docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.mts", "docs/.vitepress/**/*.vue"],
   "compilerOptions": {
+    "noEmit": true,
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "bundler",
@@ -11,6 +12,7 @@
     "exactOptionalPropertyTypes": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    "allowImportingTsExtensions": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,

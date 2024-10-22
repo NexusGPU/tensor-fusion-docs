@@ -4,17 +4,23 @@ layout: home
 
 hero:
   name: "Diátaxis Tech Docs"
-  text: "Build a living, breathing doc"
-  tagline: The full-fledged tech doc template with best practices built-in
+  text: "Build living doc site with best practices"
+  tagline: The full-fledged tech doc template powered by VitePress & Diátaxis framework
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Overview
+      link: /guide/overview
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Playground
+      link: /guide/playground
+    - theme: alt
+      text: How-to Guides
+      link: /guide/how-to-guides
+    - theme: alt
+      text: Reference
+      link: /guide/reference
   image:
-    src: /vitepress-logo-large.webp
+    src: /logo.svg
     alt: DiataxisDocTemplate
 
 features:
@@ -32,9 +38,9 @@ features:
     details: Mermaid Plugin Ready
   - title: Sandpack Sandbox
     icon: 🚀
-    details: Playground easy [or stackbliz ?]
+    details: Code sandbox playground
   - title: Battery included
     icon: 🚀
-    details: Viewerjs Image Viewer Plugin, Video.js Video Player
+    details: Viewerjs Image Viewer,  Video Player, API Doc(fern), SDK Doc, and more
 
 ---
