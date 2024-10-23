@@ -1,6 +1,8 @@
 {
+  "type": "module",
   "devDependencies": {
     "@braintree/sanitize-url": "^7.1.0",
+    "@types/video.js": "^7.3.58",
     "cytoscape": "^3.30.2",
     "cytoscape-cose-bilkent": "^4.1.0",
     "dayjs": "^1.11.13",
@@ -18,5 +20,9 @@
     "dev": "vitepress dev docs --host",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs"
+  },
+  "dependencies": {
+    "@videojs-player/vue": "^1.0.0",
+    "video.js": "^8.18.1"
   }
 }

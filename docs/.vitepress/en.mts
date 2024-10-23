@@ -29,19 +29,19 @@ function nav(): DefaultTheme.NavItem[] {
   return [
     {
       text: 'Guide',
-      link: '/guide/api-examples',
+      link: '/guide/overview',
       activeMatch: '/guide/'
     },
     {
       text: 'Reference',
-      link: '/reference/site-config',
+      link: '/reference/api',
       activeMatch: '/reference/'
     },
     {
       text: "Resources",
       items: [{
         text: "Contributing",
-        link: 'https://github.com/vuejs/vitepress/blob/main/.github/contributing.md'
+        link: 'https://github.com/Code2Life/vitepress-diataxis-template'
       }]
     }
   ]

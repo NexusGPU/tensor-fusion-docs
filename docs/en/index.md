@@ -15,32 +15,32 @@ hero:
       link: /guide/playground
     - theme: alt
       text: How-to Guides
-      link: /guide/how-to-guides
+      link: /guide/markdown-examples
     - theme: alt
       text: Reference
-      link: /guide/reference
+      link: /reference/api
   image:
     src: /logo.svg
     alt: DiataxisDocTemplate
 
 features:
-  - title: Giscus Comment
-    icon: 🚀
-    details: Giscus Comment and Feedback system built-in
-  - title: Auto translation   
-    icon: 🚀
-    details: "[Github action to auto translate](https://github.com/marketplace/actions/translate-all-markdown-action) as"
-  - title: PostHog Analytics
-    icon: 🚀
-    details: PostHog
-  - title: Markdown Extension 
-    icon: 🚀
-    details: Mermaid Plugin Ready
-  - title: Sandpack Sandbox
-    icon: 🚀
-    details: Code sandbox playground
+  - title: Comment & Feedback
+    icon: 🗣️
+    details: Comment and feedback with Giscus which based on Github discussions
+  - title: Auto translation
+    icon: 🌍
+    details: "Out-of-box i18n with auto translate Github workflow"
+  - title: Viewer analysis
+    icon: 📊
+    details: Analyze reader behavior with PostHog session recorder built-in
+  - title: Markdown diagrams
+    icon: 📝
+    details: Mermaid diagram and LaTeX built-in
+  - title: Code sandbox
+    icon: 💻
+    details: Add interactive tutorials based on Sandpack
   - title: Battery included
-    icon: 🚀
-    details: Viewerjs Image Viewer,  Video Player, API Doc(fern), SDK Doc, and more
+    icon: 🔋
+    details: Image viewer, Video player, OpenAPI auto generated docs, Deadlink check flow, and more
 
 ---

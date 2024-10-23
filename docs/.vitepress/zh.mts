@@ -58,12 +58,15 @@ function nav(): DefaultTheme.NavItem[] {
     },
     {
       text: '参考',
-      link: '/zh/reference/site-config',
+      link: '/reference/api',
       activeMatch: '/zh/reference/'
     },
     {
-      text: "贡献",
-      link: 'https://github.com/vuejs/vitepress/blob/main/.github/contributing.md'
+      text: "资源",
+      items: [{
+        text: "贡献",
+        link: 'https://github.com/Code2Life/vitepress-diataxis-template'
+      }]
     }
   ]
 }
