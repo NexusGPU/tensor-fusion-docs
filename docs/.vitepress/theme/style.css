@@ -133,6 +133,10 @@
 .sl-elements-api {
   min-height: 99vh!important;
 }
+/* Fix stoplight not supporting dark mode issue */
+elements-api > div {
+  background-color: white!important;
+}
 
 /**
  * Component: Algolia

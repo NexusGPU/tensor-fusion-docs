@@ -33,8 +33,28 @@ Goto **config.mts** file, change 'sitemap' & 'socialLinks' parts to your own dom
 
 ![](https://filecdn.code2life.top/enable-discussions.png)
 
-3. Replace data-repo and **data-repo** and **data-repo-id** in docs/.vitepress/theme/components/VComments.vue, find the snippets here: https://giscus.app/
+1. Replace data-repo and **data-repo**, **data-repo-id**, **data-category**, **data-category-id** in docs/.vitepress/theme/components/VComments.vue, find the snippets here: https://giscus.app/
 ![](https://filecdn.code2life.top/giscus-setup.png)
+
+```vue
+// docs/.vitepress/theme/components/VComment.vue
+<ClientOnly>
+  <component :is="'script'" src="https://giscus.app/client.js" 
+    data-repo="code2life/vitepress-diataxis-template" // [!code --]
+    data-repo-id="R_kgDOMsQCjQ" // [!code --]
+    data-category="General" // [!code --]
+    data-category-id="DIC_kwDOMsQCjc4CisoM" // [!code --]
+    data-repo="replace-me" // [!code ++]
+    data-repo-id="replace-me" // [!code ++]
+    data-category="General" // [!code ++]
+    data-category-id="replace-me" // [!code ++]
+    data-mapping="pathname" data-strict="0" 
+    :data-theme="isDark ? 'dark' : 'light'"
+    data-reactions-enabled="1" data-emit-metadata="0"
+    crossorigin="anonymous"
+    data-input-position="top" data-lang="en"  data-loading="lazy" async />
+</ClientOnly>
+```
 
 ### 3. Setup Auto Translate
 
@@ -75,12 +95,14 @@ This template integrates with [Stoplightio Elements](https://stoplight-site.webf
 
 Use the WebComponent with just one line of doc, see [this demo](/reference/api).
 
-```html{2,5}
+```html{2,6}
 ---
 layout: false
 ---
 
-<elements-api apiDescriptionUrl="https://api.apis.guru/v2/specs/github.com/1.1.4/openapi.yaml" router="hash" layout="sidebar"></elements-api>
+<ClientOnly>
+    <elements-api apiDescriptionUrl="https://api.apis.guru/v2/specs/github.com/1.1.4/openapi.yaml" router="hash" layout="sidebar"></elements-api>
+</ClientOnly>
 ```
 
 If you need to customize API doc page, check the [Stoplight Elements Options](https://github.com/stoplightio/elements/blob/main/docs/getting-started/elements/elements-options.md).
@@ -96,5 +118,6 @@ Read VitePress official docs to find customization ways, here are some common cu
 
 ## Known Issues
 
-1. Mermaid pie chart, ZenUML are not working, need to fix this in vitepress-plugin-mermaid lib
-2. Index page layout is not optimized for multiple products scenario
+1. Mermaid pie chart, ZenUML are not working due to vitepress-plugin-mermaid bug
+2. Page layout is not optimized for multiple products
+3. Search is local frontend by default, should change to remote search like [Algolia](https://vitepress.dev/reference/default-theme-search#algolia-search) if there are lots of contents.

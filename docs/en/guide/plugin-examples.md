@@ -7,7 +7,10 @@ outline: deep
 This template is integrated with [Video.js](https://github.com/videojs/video.js), you could add video player with simple Vue component with src and poster properties.
 
 ```html
-<video-player src="https://files.testfile.org/Video%20MP4%2FLake%20-%20testfile.org.mp4" poster="https://vitepress.dev/vitepress-logo-large.webp" />
+<video-player 
+  src="https://files.testfile.org/Video%20MP4%2FLake%20-%20testfile.org.mp4" 
+  poster="https://vitepress.dev/vitepress-logo-large.webp" 
+/>
 ```
 
 <video-player src="https://files.testfile.org/Video%20MP4%2FLake%20-%20testfile.org.mp4" poster="https://vitepress.dev/vitepress-logo-large.webp" />

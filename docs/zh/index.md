@@ -8,17 +8,17 @@ hero:
   tagline: 基于VitePress和Diátaxis的全功能技术文档模板
   actions:
     - theme: brand
-      text: Overview
-      link: /guide/overview
+      text: 概览
+      link: /zh/guide/overview
     - theme: alt
-      text: Playground
-      link: /guide/playground
+      text: 动手实验
+      link: /zh/guide/playground
     - theme: alt
-      text: How-to Guides
-      link: /guide/how-to-guides
+      text: 用户手册
+      link: /zh/guide/markdown-examples
     - theme: alt
-      text: Reference
-      link: /guide/reference
+      text: 参考
+      link: /reference/api
   image:
     src: /logo.svg
     alt: DiataxisDocTemplate

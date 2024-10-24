@@ -52,7 +52,7 @@ export const Guide = (lang: string) => [
       },
       {
         text: match(lang, {
-          en: 'Deploy Site',
+          en: 'Deployment',
           zh: '部署站点'
         }),
         link: 'deployment'
