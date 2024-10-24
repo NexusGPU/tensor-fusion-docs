@@ -62,7 +62,7 @@ This template repo is integrated [GPT translate](https://github.com/3ru/gpt-tran
 
 1. Modify .github/workflows/auto-translate.yml config based on [this doc](https://g-t.vercel.app/docs/references/supported-model-provider)
 2. Enable write permission and add OPENAI_API_KEY based on [this doc](https://g-t.vercel.app/docs/overview/getting-started)
-3. Once PR created, comment /gt docs/en/*/*.md docs/zh/*guide*/*.md Chinese
+3. Once PR created, comment **/gt docs/en/guide/\*.md docs/zh/guide/\*.md Chinese**
 
 ### 4. Setup PostHog Analysis
 

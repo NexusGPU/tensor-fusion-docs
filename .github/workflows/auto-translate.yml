@@ -17,7 +17,9 @@ jobs:
           contains(github.event.comment.body, '/gt')
         uses: 3ru/gpt-translate@master
         with:
+          # Refer: https://g-t.vercel.app/docs/references/input.en
           apikey: ${{ secrets.OPENAI_API_KEY }}
           provider: 'openai'
-          # choose pplx as provider
-          model: 'llama-3-sonar-large-32k-chat'
+          model: 'llama-3.1-sonar-small-128k-chat'
+          basePath: https://api.perplexity.ai
+          temperature: 0
