@@ -3,44 +3,41 @@
 layout: home
 
 hero:
-  name: "Diátaxis Tech Docs"
-  text: "Build living doc site with best practices"
-  tagline: The full-fledged tech doc template powered by VitePress & Diátaxis framework
+  name: "Tensor Fusion"
+  text: Less GPUs<br />More AI Apps
+  tagline: Supercharge your AI Infra with TensorFusion, <br />the Real-world GPU Virtualization Framework
   actions:
     - theme: brand
       text: Overview
       link: /guide/overview
     - theme: alt
-      text: Playground
-      link: /guide/playground
-    - theme: alt
       text: How-to Guides
       link: /guide/markdown-examples
     - theme: alt
       text: Reference
-      link: /reference/api
+      link: /reference/cli-params
   image:
-    src: /logo.svg
-    alt: DiataxisDocTemplate
+    src: /logo.png
+    alt: Logo
 
 features:
-  - title: Comment & Feedback
-    icon: 🗣️
-    details: Comment and feedback with Giscus which based on Github discussions
-  - title: Auto translation
-    icon: 🌍
-    details: "Out-of-box i18n with auto translate Github workflow"
-  - title: Viewer analysis
-    icon: 📊
-    details: Analyze reader behavior with PostHog session recorder built-in
-  - title: Markdown diagrams
+  - title: GPU Pooling & Virtualization
+    icon: 📦
+    details: Use Remote GPU pool anywhere like NFS
+  - title: Autoscaling
+    icon: 🔄
+    details: Auto scale-up and scale-down your inference workload, higher throughput with lower costs.
+  - title: Intelligent Scheduling
     icon: 📝
-    details: Mermaid diagram and LaTeX built-in
-  - title: Code sandbox
-    icon: 💻
-    details: Add interactive tutorials based on Sandpack
+    details: Balance different inference requests based on customized or automated rules, maximize GPU utilization, minimize GPU waiting time
+  - title: Management & Observability
+    icon: 📊
+    details: Out-of-box production ready GPU pool management features, monitoring, alerting and more.
+  - title: High Performance
+    icon: ⚡
+    details: With deep optimization, TensorFusion achieved <5% performance overhead for most AI models
   - title: Battery included
     icon: 🔋
-    details: Image viewer, Video player, OpenAPI auto generated docs, Deadlink check flow, and more
+    details: Support Kubernetes, bare-metal, Edge cloud.
 
 ---

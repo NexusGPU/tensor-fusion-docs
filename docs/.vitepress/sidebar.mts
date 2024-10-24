@@ -5,8 +5,8 @@ export const Guide = (lang: string) => [
     items: [
       {
         text: match(lang, {
-          en: 'Overview Sample',
-          zh: '概览示例'
+          en: 'Overview',
+          zh: '概览'
         }),
         link: 'overview'
       },
@@ -31,29 +31,8 @@ export const Guide = (lang: string) => [
     items: [
       {
         text: match(lang, {
-          en: 'Use Markdown',
-          zh: '使用Markdown'
-        }),
-        link: 'markdown-examples'
-      },
-      {
-        text: match(lang, {
-          en: 'Add Playground',
-          zh: '添加互动教程'
-        }),
-        link: 'playground'
-      },
-      {
-        text: match(lang, {
-          en: 'Built-in Extensions',
-          zh: '扩展能力'
-        }),
-        link: 'plugin-examples'
-      },
-      {
-        text: match(lang, {
           en: 'Deployment',
-          zh: '部署站点'
+          zh: '部署'
         }),
         link: 'deployment'
       },
@@ -62,15 +41,15 @@ export const Guide = (lang: string) => [
 ]
 export const Reference = (lang: string) => [
   {
-    text: 'API',
+    text: 'Reference',
     collapsed: false,
     items: [
       {
         text: match(lang, {
-          en: 'API Reference',
-          zh: 'API 参考'
+          en: 'Cli Reference',
+          zh: 'Cli 参考'
         }),
-        link: 'api'
+        link: 'cli-params'
       },
     ]
   }

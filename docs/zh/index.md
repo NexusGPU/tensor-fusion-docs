@@ -3,42 +3,39 @@
 layout: home
 
 hero:
-  name: "Diátaxis Tech Docs"
-  text: "Build living doc site with best practices"
-  tagline: 基于VitePress和Diátaxis的全功能技术文档模板
+  name: "Tensor Fusion"
+  text: Less GPUs<br />More AI Apps
+  tagline: TensorFusion GPU虚拟化和池化解决方案
   actions:
     - theme: brand
-      text: 概览
-      link: /zh/guide/overview
+      text: Overview
+      link: /guide/overview
     - theme: alt
-      text: 动手实验
-      link: /zh/guide/playground
+      text: How-to Guides
+      link: /guide/markdown-examples
     - theme: alt
-      text: 用户手册
-      link: /zh/guide/markdown-examples
-    - theme: alt
-      text: 参考
-      link: /reference/api
+      text: Reference
+      link: /reference/cli-params
   image:
-    src: /logo.svg
-    alt: DiataxisDocTemplate
+    src: /logo.png
+    alt: Logo
 features:
-  - title: 评论 & 反馈
-    icon: 🗣️
-    details: 基于 Github 讨论的 Giscus 评论和反馈
-  - title: 自动翻译
-    icon: 🌍
-    details: "内置Github Workflow自动翻译"
-  - title: 读者分析
-    icon: 📊
-    details: 内置 PostHog 浏览记录分析
-  - title: Markdown 图表
+  - title: GPU Pooling & Virtualization
+    icon: 📦
+    details: Use Remote GPU pool anywhere like NFS
+  - title: Autoscaling
+    icon: 🔄
+    details: Auto scale-up and scale-down your inference workload, higher throughput with lower costs.
+  - title: Intelligent Scheduling
     icon: 📝
-    details: 内置 Mermaid 图表和 LaTeX
-  - title: 代码沙盒
-    icon: 💻
-    details: 基于 Sandpack 快速添加交互式教程
-  - title: 一应俱全
+    details: Balance different inference requests based on customized or automated rules, maximize GPU utilization, minimize GPU waiting time
+  - title: Management & Observability
+    icon: 📊
+    details: Out-of-box production ready GPU pool management features, monitoring, alerting and more.
+  - title: High Performance
+    icon: ⚡
+    details: With deep optimization, TensorFusion achieved <5% performance overhead for most AI models
+  - title: Battery included
     icon: 🔋
-    details: 图片查看器、视频播放器、OpenAPI 自动生成文档、死链检查流程等等
+    details: Support Kubernetes, bare-metal, Edge cloud.
 ---

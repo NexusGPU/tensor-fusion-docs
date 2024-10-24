@@ -19,8 +19,7 @@ export const zh = defineConfig({
     },
 
     footer: {
-      message: '基于 MIT 许可发布',
-      copyright: `版权所有 © 2024-${new Date().getFullYear()} Joey Yang`
+      copyright: `版权所有 © 2024-${new Date().getFullYear()} Tensor Fusion AI`
     },
 
     docFooter: {

@@ -23,7 +23,7 @@ export default defineConfig(
       },
     },
 
-    title: "Awesome Doc Site",
+    title: "Tensor Fusion",
 
     rewrites: {
       "en/:rest*": ":rest*",
@@ -85,7 +85,7 @@ export default defineConfig(
     ],
 
     themeConfig: {
-      logo: { src: "/logo.svg", width: 24, height: 24 },
+      logo: { src: "/logo.png", width: 24, height: 24 },
       search: {
         provider: "local",
         options: {

@@ -19,8 +19,8 @@ export const en = defineConfig({
     },
 
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024-present Joey Yang'
+      message: '',
+      copyright: 'Copyright © 2024-present Tensor Fusion AI'
     }
   }
 })
