@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
 
-const { frontmatter, title, isDark } = useData()
+const { frontmatter, title } = useData()
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const { frontmatter, title, isDark } = useData()
       data-emit-metadata="0"
       data-input-position="top"
       data-lang="en"
-      :data-theme="isDark ? 'dark' : 'light'"
+      data-theme="dark"
       data-loading="lazy"
       async
     />
