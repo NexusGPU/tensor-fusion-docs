@@ -1,10 +1,9 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { type DefaultTheme, defineConfig, type UserConfig } from "vitepress";
 import { renderSandbox } from "vitepress-plugin-sandpack";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+// @ts-ignore
 import { withMermaid } from "vitepress-plugin-mermaid";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+// @ts-ignore
 import container from "markdown-it-container";
 
 import { en } from "./en.mts";
