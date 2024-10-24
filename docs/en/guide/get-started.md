@@ -61,8 +61,8 @@ Goto **config.mts** file, change 'sitemap' & 'socialLinks' parts to your own dom
 This template repo is integrated [GPT translate](https://github.com/3ru/gpt-translate), you can start using it in 3 steps.
 
 1. Modify .github/workflows/auto-translate.yml config based on [this doc](https://g-t.vercel.app/docs/references/supported-model-provider)
-2. Enable write permission and add OPENAI_API_KEY based on [this doc](https://g-t.vercel.app/docs/overview/getting-started)
-3. Once PR created, comment **/gt docs/en/guide/\*.md docs/zh/guide/\*.md Chinese**
+2. Enable write permission and add OPENAI_API_KEY based on [this doc](https://g-t.vercel.app/docs/overview/getting-started), the built-in example using [Perplexity AI](https://www.perplexity.ai/)
+3. Once commit to main, it will auto translate based on the workflow config
 
 ### 4. Setup PostHog Analysis
 

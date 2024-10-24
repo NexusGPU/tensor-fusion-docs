@@ -24,6 +24,14 @@ Try to click the image and then zoom in/out.
 
 ![](https://vitepress.dev/vitepress-logo-large.webp)
 
+## PostHog Analysis
+
+PostHog is a great platform that covers [Google Analytics](https://developers.google.com/analytics), [Microsoft Clarity](https://clarity.microsoft.com/) and more customer behavior analysis features.
+
+Register a free account and change config.mts file, you will see the readers' real-time activities in seconds.
+
+![](https://filecdn.code2life.top/posthog-demo.png)
+
 ## Mermaid Examples
 
 Most mermaid diagram types work in this template, try to learn mermaid in [Mermaid Playground](https://mermaid.live/).
