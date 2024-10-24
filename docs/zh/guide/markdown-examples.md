@@ -2,13 +2,11 @@
 outline: deep
 ---
 
-# Markdown Extension Examples
-
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+# Markdown扩展示例
 
 ## Syntax Highlighting
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+VitePress自带了基于[Shiki](https://github.com/shikijs/shiki)的语法高亮:
 
 **Input**
 
@@ -30,7 +28,8 @@ export default {
 export default {
   data () {
     return {
-      msg: 'Highlighted!'
+      msg: 'Highlighted!' // [!code --]
+      msg: 'Changed!' // [!code ++]
     }
   }
 }
@@ -84,6 +83,6 @@ This is a dangerous warning.
 This is a details block.
 :::
 
-## More
+## 更多示例
 
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+更多示例请查看Vitepress的[完整文档](https://vitepress.dev/guide/markdown).

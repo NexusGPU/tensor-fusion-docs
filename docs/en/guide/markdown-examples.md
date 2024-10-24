@@ -30,7 +30,8 @@ export default {
 export default {
   data () {
     return {
-      msg: 'Highlighted!'
+      msg: 'Highlighted!' // [!code --]
+      msg: 'Changed!' // [!code ++]
     }
   }
 }

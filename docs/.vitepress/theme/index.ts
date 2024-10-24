@@ -8,7 +8,6 @@ import DefaultTheme from "vitepress/theme";
 import { h } from "vue";
 import { useRoute } from "vitepress";
 import VComments from "./components/VComments.vue";
-import VDocTypeSwitch from "./components/VDocTypeSwitch.vue";
 import VPlayer from "./components/VPlayer.vue";
 import "./style.css";
 import "video.js/dist/video-js.css";
@@ -19,13 +18,13 @@ export default {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       "doc-after": () => h(VComments),
-      "sidebar-nav-before": () => h(VDocTypeSwitch),
     });
   },
   enhanceApp({ app, router, siteData }) {
     DefaultTheme.enhanceApp({ app, router, siteData });
+    // eslint-disable-next-line vue/multi-word-component-names
     app.component("Sandbox", Sandbox);
-    app.component("vImageViewer", vImageViewer);
+    app.component("VImageViewer", vImageViewer);
     app.component("VideoPlayer", VPlayer);
   },
   setup() {

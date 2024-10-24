@@ -18,6 +18,6 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
           cache-dependency-path: 'pnpm-lock.yaml'
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install
       - run: pnpm lint
       - run: pnpm type-check

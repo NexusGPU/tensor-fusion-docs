@@ -1,8 +1,10 @@
 ---
-layout: page
+layout: doc
 ---
 
 ## Sandpack Sandbox
+
+You can add <a href="https://sandpack.codesandbox.io/docs">Sandpack Sandbox</a> as playground using markdown container syntax, here is the example.
 
 ::: sandbox {deps="vue3-toastify: latest, animate.css: ~4.1.1"}
 ```vue /src/App.vue
@@ -27,9 +29,11 @@ const notify = () => {
   </div>
 </template>
 ```
-```css /src/style.css{prefix=#readOnly/src/}
+
+```css /src/style.css
 body {
   background-color: black;
 }
 ```
+
 :::

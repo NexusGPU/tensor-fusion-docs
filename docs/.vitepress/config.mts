@@ -1,6 +1,10 @@
-import { DefaultTheme, defineConfig, UserConfig } from "vitepress";
+import { type DefaultTheme, defineConfig, type UserConfig } from "vitepress";
 import { renderSandbox } from "vitepress-plugin-sandpack";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { withMermaid } from "vitepress-plugin-mermaid";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import container from "markdown-it-container";
 
 import { en } from "./en.mts";
@@ -27,9 +31,9 @@ export default defineConfig(
 		},
 		markdown: {
 			lineNumbers: true,
-			config(md: any) {
+			config(md) {
 				md.use(container, "sandbox", {
-					render(tokens: any, idx: any) {
+					render(tokens: unknown[], idx: number) {
 						return renderSandbox(tokens, idx, "sandbox");
 					},
 				});
@@ -138,5 +142,5 @@ export default defineConfig(
 				},
 			],
 		},
-	} satisfies UserConfig<DefaultTheme.Config> & { mermaid: any }),
+	} satisfies UserConfig<DefaultTheme.Config> & { mermaid: unknown }),
 );

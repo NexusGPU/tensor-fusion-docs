@@ -9,8 +9,8 @@ export const zh = defineConfig({
     nav: nav(),
 
     sidebar: {
-      '/zh/guide/': { base: '/zh/guide/', items: Guide('en') },
-      '/zh/reference/': { base: '/zh/reference/', items: Reference('en') },
+      '/zh/guide/': { base: '/zh/guide/', items: Guide('zh') },
+      '/zh/reference/': { base: '/zh/reference/', items: Reference('zh') },
     },
 
     editLink: {

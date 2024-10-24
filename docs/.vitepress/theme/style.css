@@ -129,6 +129,11 @@
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
 }
 
+/* Fix the stoplight API elements height issue */
+.sl-elements-api {
+  min-height: 99vh!important;
+}
+
 /**
  * Component: Algolia
  * -------------------------------------------------------------------------- */

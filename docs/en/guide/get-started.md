@@ -4,9 +4,26 @@ outline: deep
 
 # Quick Start
 
-### 1. Replace Hosts
+### 1. Replace Domain
 
 Goto **config.mts** file, change 'sitemap' & 'socialLinks' parts to your own domains.
+
+```js
+{
+    sitemap: {
+        hostname: "https://docs.code2life.top", // [!code --]
+        hostname: "https://docs.awesome.com", // [!code ++]
+    },
+
+    socialLinks: [
+        {
+            icon: "github",
+            link: "https://github.com/code2life/vitepress-diataxis-template", // [!code --]
+            link: "https://github.com/your-org/your-project", // [!code ++]
+        },
+    ]
+}
+```
 
 ### 2. Setup Giscus Comments
 
@@ -29,21 +46,36 @@ This template repo is integrated [GPT translate](https://github.com/3ru/gpt-tran
 
 ### 4. Setup PostHog Analysis
 
-PostHog is an amazing SaaS product that covers almost all customer behavior analysis requirements
+PostHog is an amazing SaaS product that covers almost all customer behavior analysis requirements.
 
-Goto [PostHog](https://posthog.com), register account and follow the setup steps, then copy the code snippets to replace docs/.vitepress/config.mts line 30
+Goto [PostHog](https://posthog.com), register account and follow the setup steps, then copy the code snippets to replace docs/.vitepress/config.mts head part.
+
+```js
+head: [
+    ["meta", { name: "color-scheme", content: "dark" }],
+    ...
+    [
+        "script",
+        {},
+        // copy your own script from PostHog onboarding page
+        `!function(t,e){var o,n,p,r;e.__SV||(window.posthog=...{api_host:'https://us.i.posthog.com'...`,  // [!code focus]
+    ],
+],
+```
 
 ### 5. Setup Sandpack Code Sandbox
 
-[Sandpack](https://sandpack.codesandbox.io/) is a great tool for adding interactive tutorials on documents, especially for frontend tech stack, it's out-of-box for this template site, see [vitepress-plugin-sandpack doc](https://vitepress-sandbox.js-bridge.com/get-started/introduction.html) for more details.
+[Sandpack](https://sandpack.codesandbox.io/) is a great tool for adding interactive tutorials on documents, especially for frontend tech stack, it's out-of-box for this template site, see 
+
+See [example page](/guide/playground) and check [vitepress-plugin-sandpack doc](https://vitepress-sandbox.js-bridge.com/get-started/introduction.html) for more details.
 
 ### 6. Add Auto-generated API Docs
 
 This template integrates with [Stoplightio Elements](https://stoplight-site.webflow.io/open-source/elements) for auto generating API docs based on OpenAPI schema, using separate page without any layout is recommended.
 
-Example of docs/en/reference/some-api-reference.md
+Use the WebComponent with just one line of doc, see [this demo](/reference/api).
 
-```html
+```html{2,5}
 ---
 layout: false
 ---
@@ -51,7 +83,7 @@ layout: false
 <elements-api apiDescriptionUrl="https://api.apis.guru/v2/specs/github.com/1.1.4/openapi.yaml" router="hash" layout="sidebar"></elements-api>
 ```
 
-If you need customize API doc page, check the [Stoplight Elements Options](https://github.com/stoplightio/elements/blob/main/docs/getting-started/elements/elements-options.md).
+If you need to customize API doc page, check the [Stoplight Elements Options](https://github.com/stoplightio/elements/blob/main/docs/getting-started/elements/elements-options.md).
 
 ## 7. Customization
 
@@ -62,8 +94,7 @@ Read VitePress official docs to find customization ways, here are some common cu
 - You can [change the default layout](https://vitepress.dev/guide/extending-default-theme#layout-slots) by editing docs/.vitepress/theme/index.ts
 - You can [custom other layouts](https://vitepress.dev/reference/default-theme-layout#custom-layout) by adding new components and use it in front-formatter
 
-
 ## Known Issues
 
 1. Mermaid pie chart, ZenUML are not working, need to fix this in vitepress-plugin-mermaid lib
-2. Index page layout should be enhanced, show more resource links
+2. Index page layout is not optimized for multiple products scenario

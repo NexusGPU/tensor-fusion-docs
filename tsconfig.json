@@ -1,5 +1,6 @@
 {
-  "include": ["docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.mts", "docs/.vitepress/**/*.vue"],
+  "extends": "@vue/tsconfig",
+  "include": ["docs/.vitepress/**/*.vue", "docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.mts"],
   "compilerOptions": {
     "noEmit": true,
     "module": "esnext",

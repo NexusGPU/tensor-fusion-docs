@@ -2,18 +2,23 @@
 outline: deep
 ---
 
-
 ## Video.js
 
-<video-player src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" poster="https://vitepress.dev/vitepress-logo-large.webp" />
+<video-player src="https://files.testfile.org/Video%20MP4%2FLake%20-%20testfile.org.mp4" poster="https://vitepress.dev/vitepress-logo-large.webp" />
+
+```html
+<video-player src="https://files.testfile.org/Video%20MP4%2FLake%20-%20testfile.org.mp4" poster="https://vitepress.dev/vitepress-logo-large.webp" />
+```
 
 ## Image Viewer
 
-Click the image to zoom in and zoom out
+Click the image to zoom in and zoom out, no additional settings, just use markdown image syntax "![](image url)"
 
 ![](https://vitepress.dev/vitepress-logo-large.webp)
 
 ## Mermaid Examples
+
+Most mermaid diagram types work in this template, see [Mermaid Playground](https://mermaid.live/)
 
 ```mermaid
 flowchart TD
