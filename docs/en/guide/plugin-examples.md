@@ -4,21 +4,29 @@ outline: deep
 
 ## Video.js
 
-<video-player src="https://files.testfile.org/Video%20MP4%2FLake%20-%20testfile.org.mp4" poster="https://vitepress.dev/vitepress-logo-large.webp" />
+This template is integrated with [Video.js](https://github.com/videojs/video.js), you could add video player with simple Vue component with src and poster properties.
 
 ```html
-<video-player src="https://files.testfile.org/Video%20MP4%2FLake%20-%20testfile.org.mp4" poster="https://vitepress.dev/vitepress-logo-large.webp" />
+<video-player 
+  src="https://files.testfile.org/Video%20MP4%2FLake%20-%20testfile.org.mp4" 
+  poster="https://vitepress.dev/vitepress-logo-large.webp" 
+/>
 ```
+
+<video-player src="https://files.testfile.org/Video%20MP4%2FLake%20-%20testfile.org.mp4" poster="https://vitepress.dev/vitepress-logo-large.webp" />
+
 
 ## Image Viewer
 
-Click the image to zoom in and zoom out, no additional settings, just use markdown image syntax "![](image url)"
+This template is integrated with [Viewer.js](https://github.com/fengyuanchen/viewerjs), no additional settings required, just use markdown image syntax "![](image url)".
+
+Try to click the image and then zoom in/out.
 
 ![](https://vitepress.dev/vitepress-logo-large.webp)
 
 ## Mermaid Examples
 
-Most mermaid diagram types work in this template, see [Mermaid Playground](https://mermaid.live/)
+Most mermaid diagram types work in this template, try to learn mermaid in [Mermaid Playground](https://mermaid.live/).
 
 ```mermaid
 flowchart TD
