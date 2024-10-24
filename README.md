@@ -1,4 +1,4 @@
-<p align="center"><a href="javascript:void(0);" target="_blank" rel="noreferrer"><img width="300" src="http://localhost:5174/logo.svg" alt="Logo"></a></p>
+<p align="center"><a href="javascript:void(0);" target="_blank" rel="noreferrer"><img width="300" src="./docs//public/logo.svg" alt="Logo"></a></p>
 
 # VitePress Diataxis Template
 
