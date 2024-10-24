@@ -8,34 +8,34 @@ hero:
   tagline: TensorFusion GPU虚拟化和池化解决方案
   actions:
     - theme: brand
-      text: Overview
-      link: /guide/overview
+      text: 概览
+      link: /zh/guide/overview
     - theme: alt
-      text: How-to Guides
-      link: /guide/markdown-examples
+      text: 用户手册
+      link: /zh/guide/get-started
     - theme: alt
-      text: Reference
-      link: /reference/cli-params
+      text: 参考
+      link: /zh/reference/cli-params
   image:
     src: /logo.png
     alt: Logo
 features:
-  - title: GPU Pooling & Virtualization
-    icon: 📦
-    details: Use Remote GPU pool anywhere like NFS
-  - title: Autoscaling
+  - title: GPU池化和虚拟化
+    icon: 📤
+    details: 像用NFS一样在局域网任何机器用GPU
+  - title: 自动扩缩容
     icon: 🔄
-    details: Auto scale-up and scale-down your inference workload, higher throughput with lower costs.
-  - title: Intelligent Scheduling
-    icon: 📝
-    details: Balance different inference requests based on customized or automated rules, maximize GPU utilization, minimize GPU waiting time
-  - title: Management & Observability
+    details: 自动扩缩推理应用，让任意应用利用到全池资源更低成本实现更高吞吐
+  - title: 智能调度
+    icon: 🌈
+    details: 通过背压整流和多级反馈队列调度，最大化GPU使用率，最小化推理请求任务等待时长
+  - title: 管理 & 可观测性
     icon: 📊
-    details: Out-of-box production ready GPU pool management features, monitoring, alerting and more.
-  - title: High Performance
+    details: 开箱即用的GPU池化管理、监控告警
+  - title: 高性能
     icon: ⚡
-    details: With deep optimization, TensorFusion achieved <5% performance overhead for most AI models
-  - title: Battery included
-    icon: 🔋
-    details: Support Kubernetes, bare-metal, Edge cloud.
+    details: 对CUDA API底层优化，使得大部分模型应用在局域网使用池化GPU性能损失<5%
+  - title: 云中立
+    icon: 🌥️
+    details: 支持Kubernetes、裸金属、边缘云等各种环境
 ---

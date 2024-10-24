@@ -12,7 +12,7 @@ hero:
       link: /guide/overview
     - theme: alt
       text: How-to Guides
-      link: /guide/markdown-examples
+      link: /guide/get-started
     - theme: alt
       text: Reference
       link: /reference/cli-params
@@ -22,13 +22,13 @@ hero:
 
 features:
   - title: GPU Pooling & Virtualization
-    icon: 📦
+    icon: 📤
     details: Use Remote GPU pool anywhere like NFS
   - title: Autoscaling
     icon: 🔄
     details: Auto scale-up and scale-down your inference workload, higher throughput with lower costs.
   - title: Intelligent Scheduling
-    icon: 📝
+    icon: 🌈
     details: Balance different inference requests based on customized or automated rules, maximize GPU utilization, minimize GPU waiting time
   - title: Management & Observability
     icon: 📊
@@ -36,8 +36,8 @@ features:
   - title: High Performance
     icon: ⚡
     details: With deep optimization, TensorFusion achieved <5% performance overhead for most AI models
-  - title: Battery included
-    icon: 🔋
-    details: Support Kubernetes, bare-metal, Edge cloud.
+  - title: Cloud Agnostic
+    icon: 🌥️
+    details: Support Kubernetes, Bare-metal, Edge cloud and more
 
 ---

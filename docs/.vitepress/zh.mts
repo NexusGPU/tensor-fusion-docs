@@ -52,19 +52,19 @@ function nav(): DefaultTheme.NavItem[] {
   return [
     {
       text: '指南',
-      link: '/zh/api-examples',
-      activeMatch: '/zh/guide/'
+      link: '/guide/overview',
+      activeMatch: '/guide/'
     },
     {
       text: '参考',
-      link: '/reference/api',
-      activeMatch: '/zh/reference/'
+      link: '/reference/cli-params',
+      activeMatch: '/reference/'
     },
     {
       text: "资源",
       items: [{
         text: "贡献",
-        link: 'https://github.com/Code2Life/vitepress-diataxis-template'
+        link: 'https://github.com/NexusGPU/docs'
       }]
     }
   ]

@@ -34,7 +34,7 @@ function nav(): DefaultTheme.NavItem[] {
     },
     {
       text: 'Reference',
-      link: '/reference/api',
+      link: '/reference/cli-params',
       activeMatch: '/reference/'
     },
     {

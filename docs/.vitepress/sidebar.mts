@@ -31,10 +31,17 @@ export const Guide = (lang: string) => [
     items: [
       {
         text: match(lang, {
-          en: 'Deployment',
-          zh: '部署'
+          en: 'Kubernetes Deployment',
+          zh: 'Kubernetes部署'
         }),
-        link: 'deployment'
+        link: 'deployment-k8s'
+      },
+      {
+        text: match(lang, {
+          en: 'VM/BareMetal Deployment',
+          zh: 'VM/BareMetal部署'
+        }),
+        link: 'deployment-vm'
       },
     ]
   }
