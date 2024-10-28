@@ -41,7 +41,7 @@ function nav(): DefaultTheme.NavItem[] {
       text: "Resources",
       items: [{
         text: "Contributing",
-        link: 'https://github.com/Code2Life/vitepress-diataxis-template'
+        link: 'https://github.com/NexusGPU/docs'
       }]
     }
   ]

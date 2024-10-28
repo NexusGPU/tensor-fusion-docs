@@ -15,12 +15,11 @@ const { frontmatter, title, isDark } = useData()
       what needs to be uninstalled is the giscus comment section that has been inserted into the DOM.
     -->
     <ClientOnly>
-      <component
-:is="'script'" src="https://giscus.app/client.js" 
-        data-repo="code2life/vitepress-diataxis-template"
-        data-repo-id="R_kgDOMsQCjQ" 
-        data-category="General" 
-        data-category-id="DIC_kwDOMsQCjc4CisoM"
+      <component :is="'script'" src="https://giscus.app/client.js" 
+        data-repo="NexusGPU/docs"
+        data-repo-id="R_kgDONFJmVA"
+        data-category="General"
+        data-category-id="DIC_kwDONFJmVM4Cjqv7"
         data-mapping="pathname" data-strict="0" 
         :data-theme="isDark ? 'dark' : 'light'"
         data-reactions-enabled="1" data-emit-metadata="0"

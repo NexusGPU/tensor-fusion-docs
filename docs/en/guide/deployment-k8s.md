@@ -8,20 +8,20 @@ outline: deep
 
 1. Create a Kubernetes cluster with GPU pool enabled, GPU Operator enabled
 2. Kubernetes is able to connect to Docker Hub to pull public images
-3. Create cuda-fusion-test namespace for evaluation
+3. Create tensor-fusion-test namespace for evaluation
 
 ```bash
-kubectl create ns cuda-fusion-test
+kubectl create ns tensor-fusion-test
 ```
 
-## Step 1. Run serverside on GPU node
+## Step 1. Run server side on GPU node
 
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cuda-fusion-gpu-server
-  namespace: cuda-fusion-test
+  name: tensor-fusion-gpu-server
+  namespace: tensor-fusion-test
 spec:
   replicas: 1
   selector:
@@ -33,15 +33,15 @@ spec:
         workload: test
     spec:
       # Recommend to use fixed node during testing and evaluation of TensorFusion
-      nodeSelector:  
+      nodeSelector:
         kubernetes.io/hostname: replace-me-with-kubernetes-node-name // [!code highlight]
       hostNetwork: true  // ![code highlight]
       containers:
-        - name: cuda
-          image: code2life/cuda-fusion:v0.9
-          command: 
+        - name: server
+          image: code2life/cuda-fusion:v0.91
+          command:
           - sh
-          - -c 
+          - -c
           # when driver version is 535.183.*, -k is 0x298, when it's 550.*, -k is 0x268 // ![!code highlight]
           - "vcuda -n native -s 9997 -r 9998 -p 9999 -a 0x1129 -k 0x298" // [!code highlight]
           resources:
@@ -49,7 +49,7 @@ spec:
               nvidia.com/gpu: '1' // obtain one GPU for testing, could be multiple [!code highlight]
 ```
 
-## Step 2. Deploy or patch client apps
+## Step 2. Deploy client side test app
 
 After serverside running successfully, copy the NodeIP, replace the vcuda-client startup command.
 
@@ -61,8 +61,8 @@ Before patch exiting workload to move to away from GPU node and schedule to CPU 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cuda-fusion-test-cpu-client
-  namespace: cuda-fusion-test
+  name: tensor-fusion-test-cpu-client
+  namespace: tensor-fusion-test
 spec:
   replicas: 1
   selector:
@@ -80,17 +80,17 @@ spec:
       hostIPC: true
       initContainers:
         - name: init-hook
-          image: code2life/cuda-fusion-client:v0.95-slim
-          command: 
-          - sh
-          - -c
-          - cp /lib/vcuda/*.so /target/lib/vcuda/ && cp /lib/vcuda/libcuda.so.1 /target/lib/vcuda/ 
+          image: code2life/cuda-fusion-client:v0.97-slim
+          command:
+            - sh
+            - -c
+            - cp /lib/vcuda/*.so /target/lib/vcuda/ && cp /lib/vcuda/official.libcuda.so.1 /target/lib/vcuda/libcuda.so.1
           volumeMounts:
             - mountPath: /target/lib/vcuda
               name: vcuda-libs
       containers:
         - name: client
-          image: code2life/cuda-fusion-client:v0.95-slim
+          image: code2life/cuda-fusion-client:v0.97-slim
           command:
             - sh
             - -c
@@ -100,7 +100,12 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["/bin/sh", "-c", "mkdir -p /usr/local/nvidia/lib/ && cp -r /lib/vcuda/libcuda.so.1 /usr/local/nvidia/lib/ && pip3 install transformers sentencepiece"]
+                command:
+                  [
+                    "/bin/sh",
+                    "-c",
+                    "mkdir -p /usr/local/nvidia/lib/ && cp -r /lib/vcuda/libcuda.so.1 /usr/local/nvidia/lib/ && pip3 install transformers sentencepiece",
+                  ]
           env:
             - name: DISABLE_ADDMM_CUDA_LT
               value: "1"
@@ -118,10 +123,143 @@ Then run "kubectl exec" into the "app" container, run this command inside the sh
 LD_PRELOAD=/lib/vcuda/libutilities.so:/lib/vcuda/libvcuda.so  python3
 ```
 
-Finally, test a simple Google T5 model inference in CPU pod. It should translate English "Hello" to German "Hallo" in seconds.
+Finally, test a simple Google T5 model inference in CPU pod, initialization duration will be 20s to 2 minutes, depends on intranet latency, afterwards, it should translate English "Hello" to German "Hallo" in seconds.
 
 ```python
 from transformers import pipeline
 pipe = pipeline("translation_en_to_de", model="google-t5/t5-base", device="cuda:0")
 pipe("Hello")
+```
+
+## Step 3. Patch your existing service deployment
+
+If you've installed Kyverno, apply this yaml into Kubernetes. It mainly auto inject following changes, **only if "tensor-fusion.ai/enabled" is "true" annotation present on the Deployment podTemplate**:
+
+1. Add 'vcuda-libs' emptyDir volume to the deployment
+2. Enable hostPID & hostIPC to the deployment, for sharing memory between sidecar and application (Don't worry, sidecar will be removed in future)
+3. Inject init container to copy LD_PRELOAD libs into application container
+4. Inject vcuda-client container as sidecar, remember to replace "REPLACE_ME" with the server NodeIP
+
+If you don't have Kyverno installed, please manually perform actions above.
+
+```yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: inject-tensor-fusion
+  annotations:
+    policies.kyverno.io/title: Inject Tensor Fusion runtime
+    policies.kyverno.io/subject: Deployment,Volume
+    policies.kyverno.io/minversion: 1.6.0
+    policies.kyverno.io/description: >-
+      Inject Tensor fusion runtime include a sidecar client container, an init container to provide cuda stub and hook pytorch
+spec:
+spec:
+  admission: true
+  background: true
+  rules:
+    - name: inject-tensor-fusion-sidecar
+      match:
+        any:
+          - resources:
+              annotations:
+                tensor-fusion.ai/enabled: 'true'
+              kinds:
+                - Pod
+      mutate:
+        patchStrategicMerge:
+          spec:
+            containers:
+              - name: app # the container name must be app  // [!code highlight]
+                env:
+                  - name: DISABLE_ADDMM_CUDA_LT
+                    value: "1"
+                  - name: LD_LIBRARY_PATH
+                    value: /lib/vcuda/
+                  - name: LD_PRELOAD
+                    value: /lib/vcuda/libutilities.so:/lib/vcuda/libvcuda.so
+                volumeMounts:
+                  - name: vcuda-libs
+                    mountPath: /lib/vcuda
+              
+              - command:
+                  - sh
+                  - '-c'
+                  - vcuda-client 0 REPLACE_ME native 9998 9997 9999 0  // [!code highlight]
+                image: code2life/cuda-fusion-client:v0.97-slim
+                imagePullPolicy: IfNotPresent
+                name: vcuda-client
+            hostIPC: true
+            hostPID: true
+            initContainers:
+              - command:
+                  - sh
+                  - '-c'
+                  - >-
+                    cp /lib/vcuda/*.so /target/lib/vcuda/ && cp
+                    /lib/vcuda/official.libcuda.so.1
+                    /target/lib/vcuda/libcuda.so.1
+                image: code2life/cuda-fusion-client:v0.97-slim
+                imagePullPolicy: IfNotPresent
+                name: copy-runtime-libs
+                volumeMounts:
+                  - mountPath: /target/lib/vcuda
+                    name: vcuda-libs
+            volumes:
+              - emptyDir: {}
+                name: vcuda-libs
+      
+```
+
+Then you could apply the following yaml to create a simple pytorch workload to test the injection.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tensor-fusion-test-on-cpu-node-kyverno
+  namespace: tensor-fusion-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      workload: test
+  template:
+    metadata:
+      labels:
+        workload: test
+      annotations:
+        tensor-fusion.ai/enabled: "true"
+    spec:
+      containers:
+        - name: app
+          image: pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
+          command:
+            - sleep
+            - infinity
+```
+
+After pod started, run this command. If everything is fine, you could modify the existing Deployment pod template to trigger kyverno injection and migrate to Tensor Fusion
+
+```bash
+pip3 install transformers sentencepiece
+
+LD_PRELOAD="" cat <<EOT >> t5.test.py
+from transformers import T5Tokenizer, T5ForConditionalGeneration
+from transformers import TextStreamer
+
+model_id = "google-t5/t5-base"
+tokenizer = T5Tokenizer.from_pretrained(model_id)
+streamer = TextStreamer(tokenizer)
+model = T5ForConditionalGeneration.from_pretrained(model_id)
+model = model.to("cuda:0")
+
+input_text = "translate English to German: How old are you?"
+input_ids = tokenizer(input_text, return_tensors="pt").input_ids.to("cuda")
+outputs = model.generate(input_ids, streamer=streamer)
+EOT
+
+python3 t5.test.py
+
+# Output <pad>Wie alt bist  du?</s> in the end
 ```

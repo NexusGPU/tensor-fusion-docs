@@ -155,7 +155,7 @@ export default defineConfig(
       socialLinks: [
         {
           icon: "github",
-          link: "https://github.com/code2life/vitepress-diataxis-template",
+          link: "https://github.com/NexusGPU/docs",
         },
       ],
     },
