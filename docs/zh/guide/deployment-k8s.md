@@ -35,7 +35,7 @@ spec:
       # Recommend to use fixed node during testing and evaluation of TensorFusion
       nodeSelector:  
         kubernetes.io/hostname: replace-me-with-kubernetes-node-name // [!code highlight]
-      hostNetwork: true  // ![code highlight]
+      hostNetwork: true  // [!code highlight]
       runtimeClassName: nvidia // if default runtime class is nvidia, this line is optional ![code highlight]
       containers:
         - name: server
@@ -43,7 +43,7 @@ spec:
           command: 
           - sh
           - -c 
-          # when driver version is 535.183.*, -k is 0x298, when it's 550.*, -k is 0x268 // ![!code highlight]
+          # when driver version is 535.183.*, -k is 0x298, when it's 550.*, -k is 0x268 // [!code highlight]
           - "vcuda -n native -s 9997 -r 9998 -p 9999 -a 0x1129 -k 0x298" // [!code highlight]
 
           resources:
